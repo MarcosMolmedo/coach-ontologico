@@ -1,0 +1,138 @@
+.hero {
+  width: 100%;
+  min-height: 100vh;
+
+  background-image: url("../assets/images/hero-montana.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero__overlay {
+  width: 100%;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.38) 45%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding:
+    2rem
+    8%
+    5rem;
+}
+
+.hero__content {
+  width: 100%;
+  max-width: 780px;
+
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero__title {
+  max-width: 650px;
+
+ font-size: clamp(1.7rem, 3.2vw, 3.2rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+
+  margin:
+    0
+    auto
+    1.2rem;
+}
+
+.hero__subtitle {
+  max-width: 620px;
+
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  line-height: 1.7;
+  font-weight: 300;
+
+  margin:
+    0
+    auto
+    2rem;
+}
+
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 220px;
+
+  padding:
+    1rem
+    2.2rem;
+
+  background-color: #e27018;
+  color: #ffffff;
+
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+
+  border-radius: 999px;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero__button:hover {
+  background-color: #c75c0e;
+  transform: translateY(-3px);
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: 90vh;
+    background-position: center;
+  }
+
+  .hero__overlay {
+    min-height: 90vh;
+
+    justify-content: center;
+    align-items: flex-end;
+
+    padding:
+      2rem
+      1.5rem
+      4rem;
+
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.78) 100%
+    );
+  }
+
+  .hero__content {
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .hero__subtitle {
+    font-size: 1.05rem;
+  }
+
+  .hero__button {
+    width: 100%;
+    max-width: 320px;
+  }
+}
