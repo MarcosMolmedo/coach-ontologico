@@ -2,7 +2,7 @@ import "../styles/Hero.css";
 
 function Hero() {
   return (
-    <section className="hero">
+    <section id="inicio" className="hero">
       <div className="hero__overlay">
         <div className="hero__content">
           <h1 className="hero__title">

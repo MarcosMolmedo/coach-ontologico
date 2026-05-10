@@ -23,7 +23,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <section className="testimonials">
+    <section className="testimonials" id="testimonios">
       <div className="testimonials__container">
         <div className="testimonials__header">
           <span className="testimonials__eyebrow">Testimonios</span>

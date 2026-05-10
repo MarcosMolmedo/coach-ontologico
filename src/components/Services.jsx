@@ -20,7 +20,7 @@ function Services() {
   ];
 
   return (
-    <section className="services">
+    <section className="services" id="servicios">
       <div className="services__container">
         <div className="services__intro">
           <span className="services__eyebrow">Servicios</span>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import "../styles/Home.css";
-
+import Header from "../components/Header.jsx";
 import Hero from "../components/Hero.jsx";
 import About from "../components/About.jsx";
 import AboutStory from "../components/AboutStory.jsx";
@@ -39,13 +39,15 @@ function Home() {
 
   return (
     <main className="home">
+      
+      <Header />
       <Hero />
       <About onShowStory={handleShowAboutStory} />
 
       {showAboutStory && (
         <AboutStory onHideStory={handleHideAboutStory} />
       )}
-
+      
       <Mission />
       <Services />
       <Testimonials />
