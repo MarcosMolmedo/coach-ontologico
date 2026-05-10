@@ -21,7 +21,7 @@ function Header() {
   };
 
   return (
-    <header className={`header ${isHidden ? "header--hidden" : ""}`}>
+    <header className={`header ${isHidden && !menuOpen ? "header--hidden" : ""}`}>
       <div className="header__container">
         <a href="#inicio" className="header__logo" onClick={closeMenu}>
           Nombre del Coach
