@@ -1,6 +1,57 @@
+import { useState } from "react";
 import "../styles/ContactSection.css";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:3000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.ok) {
+        alert("Mensaje enviado correctamente.");
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        alert("Hubo un error al enviar el mensaje.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error del servidor. Revisá si el backend está encendido.");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <section className="contact" id="contacto">
       <div className="contact__container">
@@ -30,17 +81,21 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <form className="contact__form">
+        <form className="contact__form" onSubmit={handleSubmit}>
           <div className="contact__field">
             <label className="contact__label" htmlFor="name">
               Nombre
             </label>
+
             <input
               className="contact__input"
               id="name"
               name="name"
               type="text"
               placeholder="Tu nombre"
+              value={formData.name}
+              onChange={handleChange}
+              required
             />
           </div>
 
@@ -48,12 +103,16 @@ const ContactSection = () => {
             <label className="contact__label" htmlFor="email">
               Email
             </label>
+
             <input
               className="contact__input"
               id="email"
               name="email"
               type="email"
               placeholder="tuemail@ejemplo.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
             />
           </div>
 
@@ -61,16 +120,20 @@ const ContactSection = () => {
             <label className="contact__label" htmlFor="message">
               Mensaje
             </label>
+
             <textarea
               className="contact__textarea"
               id="message"
               name="message"
               placeholder="Contame brevemente qué te gustaría trabajar..."
+              value={formData.message}
+              onChange={handleChange}
+              required
             ></textarea>
           </div>
 
-          <button className="contact__button" type="submit">
-            Enviar mensaje
+          <button className="contact__button" type="submit" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar mensaje"}
           </button>
         </form>
       </div>
